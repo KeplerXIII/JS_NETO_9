@@ -5,7 +5,10 @@ const now = new Date();
 const hours = now.getHours();
 const minutes = now.getMinutes();
 const time = hours + ':' + (minutes < 10 ? '0' : '') + minutes;
-const myArray = ['Досвидания!', 'Ты кто? Мы тебя не звали!', 'Хорошо, что ты уже уходишь!', 'Оператор занят своими делами, ответим, может быть...'];
+const myArray = ['Досвидания!',
+                 'Ты кто? Мы тебя не звали!',
+                 'Хорошо, что ты уже уходишь!',
+                 'Оператор занят своими делами, ответим, может быть...'];
 
 widget.addEventListener('click', () => {
     widget.classList.add('chat-widget_active')
