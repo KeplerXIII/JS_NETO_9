@@ -40,5 +40,8 @@ input.addEventListener('keydown', function(event) {
             </div>
         </div>
         `;
+
+        const lastMessage = messages.querySelector('.message:last-child');
+        lastMessage.scrollIntoView({ block: "end", behavior: "smooth" });
     }
   });
