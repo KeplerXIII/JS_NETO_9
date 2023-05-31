@@ -11,8 +11,33 @@ const myArray = ['Досвидания!',
                  'Оператор занят своими делами, ответим, может быть...'];
 
 widget.addEventListener('click', () => {
-    widget.classList.add('chat-widget_active')
+    widget.classList.add('chat-widget_active');
 });
+
+let timerId;
+
+function askQuestion() {
+    messages.innerHTML += `
+    <div class="message">
+        <div class="message__time">
+        ${time}
+        </div>
+        <div class="message__text">
+        Ты где вонючка?
+        </div>
+    </div>
+    `;
+
+    const lastMessage = messages.querySelector('.message:last-child');
+    lastMessage.scrollIntoView({ block: "end", behavior: "smooth" });
+}
+
+function resetTimer() {
+    clearTimeout(timerId);
+    if (widget.classList.contains('chat-widget_active')) {
+        timerId = setTimeout(askQuestion, 30000);
+    };
+};
 
 input.addEventListener('keydown', function(event) {
     const message = input.value;
@@ -43,5 +68,9 @@ input.addEventListener('keydown', function(event) {
 
         const lastMessage = messages.querySelector('.message:last-child');
         lastMessage.scrollIntoView({ block: "end", behavior: "smooth" });
+
+        resetTimer();
     }
-  });
+});
+
+resetTimer();
